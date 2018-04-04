@@ -12,19 +12,15 @@ public class NumberWizard : MonoBehaviour {
 	int maximum;
 	int minimum;
 	int guess;
-	int maxGuessesAllowed = 10;
+	public int maxGuessesAllowed = 15;
 
 	void Start() {
-		maximum = 1000;
 		minimum = 1;
-		guess = 500;
-
+		maximum = 1000;
+		guess = Random.Range (minimum,maximum+1);
+		guessTextField.text = guess.ToString();
 		maximum = maximum + 1;
 		triesRemaining.text = maxGuessesAllowed + " Attempts Remain";
-	}
-
-	void GameStart () {
-	
 	}
 
 	public void GuessHigher () {
@@ -44,10 +40,9 @@ public class NumberWizard : MonoBehaviour {
 		triesRemaining.text = maxGuessesAllowed + " Attempts Remain";
 
 		//guess = (minimum + maximum) / 2;
+		guess = Random.Range (minimum, maximum+1);
 
-		guess = Random.Range (minimum, maximum);
-
-		guessTextField.text = "Is your number " + guess + "?";
+		guessTextField.text = guess.ToString();
 		if (maxGuessesAllowed <= 0) {
 			SceneManager.LoadScene ("Win");
 		}
